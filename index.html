@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-56789" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/17/56789/" class="article-date">
+  <time datetime="2017-08-17T11:07:06.018Z" itemprop="datePublished">2017-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网络状态"><a href="#网络状态" class="headerlink" title="网络状态"></a>网络状态</h1><blockquote>
+<p>在移动端，我们经常需要检测设置是在线还是离线，HTML5为此定义了一个navigator.onLine属性，这个属性用于检测设备是否联网。<strong><em>navigator.onLine</em></strong> 在不同浏览器中有细微的差别。</p>
+</blockquote>
+<h2 id="网络状态-1"><a href="#网络状态-1" class="headerlink" title="网络状态"></a>网络状态</h2><p>【01.网络状态.html】<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">navigator.onLine返回用户当前的网络状况，是一个布尔值</div><div class="line"><span class="number">1.</span> 如果浏览器连不上网(包括局域网)，就是离线状态，也就是脱机状态，会返回<span class="literal">false</span></div><div class="line"><span class="number">2.</span> 否则就是在线状态，返回<span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p><strong><em>注意：返回true不一定就是说一定能访问互联网，因为有可能连接的是局域网。但是返回false则表示一定连不上网。</em></strong></p>
+<h2 id="监听网络变化"><a href="#监听网络变化" class="headerlink" title="监听网络变化"></a>监听网络变化</h2><p>【02-判断网络状态.html】</p>
+<blockquote>
+<p>为了更好的确定网络是否连接，HTML5还定义了两个事件，用于监听网络状态的变化。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//网络连接时会被调用</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"online"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">"online"</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//网络断开时会被调用</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"offline"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">"offline"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="images/network.gif" alt=""></p>
+<h1 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h1><blockquote>
+<p>在HTML规范中，增加了获取用户地理信息的API，这样使得我们可以基于用户位置开发互联网应用，即基于位置服务LBS(Location Base Service)</p>
+</blockquote>
+<h2 id="隐私"><a href="#隐私" class="headerlink" title="隐私"></a>隐私</h2><p>HTML5规范提供了一套保护用户隐私的机制。必须先得到用户明确许可，才能获取用户的位置信息。<strong><em>在获取地理位置之前，会询问用户，只有在获得许可之后，才能获取到用户的位置信息。</em></strong> </p>
+<h2 id="相关的方法"><a href="#相关的方法" class="headerlink" title="相关的方法"></a>相关的方法</h2><p>【03-获取地理位置.html】<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//successCallback:获取成功后会调用,并返回一个position对象，里面包含了地理位置信息</span></div><div class="line"><span class="comment">//获取失败了会调用，并返回error对象，里面包含了错误信息。</span></div><div class="line"><span class="comment">//获取当前的地理位置信息</span></div><div class="line">navigator.geolocation.getCurrentPosition(successCallback, errorCallback)</div><div class="line"><span class="comment">//重复的获取当前的地理位置信息</span></div><div class="line">navigator.geolocation.watchPosition(successCallback, errorCallback)</div></pre></td></tr></table></figure></p>
+<p>实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span>(<span class="params">position</span>)</span>&#123;</div><div class="line">    <span class="comment">// 定位成功会调用该方法</span></div><div class="line">    <span class="comment">// position.coords.latitude 纬度</span></div><div class="line">    <span class="comment">// position.coords.longitude 经度</span></div><div class="line">    <span class="comment">// position.coords.accuracy 精度</span></div><div class="line">    <span class="comment">// position.coords.altitude 海拔高度</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</div><div class="line">    <span class="comment">// 定位失败会调用该方法</span></div><div class="line">    <span class="comment">// error 是错误信息</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong><em>在iOS 10中，苹果对webkit定位权限进行了修改，所有定位请求的页面必须是https协议的。</em></strong> </p>
+<h2 id="百度地图"><a href="#百度地图" class="headerlink" title="百度地图"></a>百度地图</h2><blockquote>
+<p>仅仅获取到经纬度对于用户来说意义并不大，因为用户也不知道经度和纬度表示的是地球上的哪一个地方，因为我们可以结合百度地图，准确的将用户的位置显示出来。</p>
+</blockquote>
+<p>百度地图官网：<a href="http://lbsyun.baidu.com/" target="_blank" rel="external">http://lbsyun.baidu.com/</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 在开发中，找到javascript API</div><div class="line"><span class="number">2.</span> 直接查看示例demo</div><div class="line"><span class="number">3.</span> 复制相应的代码，替换掉秘钥就行，秘钥只需创建一个新的应用就可以了。</div></pre></td></tr></table></figure>
+<p>【04-百度地图的用法.html】<br>【05-百度地图(设置新的图标).html】</p>
+<h1 id="web存储"><a href="#web存储" class="headerlink" title="web存储"></a>web存储</h1><blockquote>
+<p>在代码执行的时候，数据都是存储在内存中的，当页面关闭或者浏览器关闭的时候，内存就被释放掉了。数据只有存储在硬盘上，才不会被释放。</p>
+</blockquote>
+<p>【01-web存储初体验.html】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存储在内存中，会被释放</span></div><div class="line">    <span class="keyword">var</span> str = <span class="string">"hello world"</span>;</div><div class="line">    <span class="built_in">console</span>.log(str);</div><div class="line"></div><div class="line">    <span class="comment">//存储在硬盘上，不会被释放</span></div><div class="line">    localStorage.setItem(<span class="string">"name"</span>, <span class="string">"张三"</span>);</div><div class="line">    <span class="built_in">console</span>.log(localStorage.getItem(<span class="string">"name"</span>));</div></pre></td></tr></table></figure>
+<h2 id="cookie-了解"><a href="#cookie-了解" class="headerlink" title="cookie(了解)"></a>cookie(了解)</h2><blockquote>
+<p>传统方式，我们以document.cookie进行存储，但是存储起来特别麻烦，并且，存储大小只有4k，常用来做自动登录，即存储用户的账号和密码信息。每次请求都会带上cookie</p>
+</blockquote>
+<p>【02-cookie存储.html】<br>cookie是以字符串形式存在的，这个字符串有固定的格式：key=value;key1=value1;</p>
+<p>在获取cookie内容时，一般需要通过正则或者字符串的方法进行处理，转换成对象，最终得到数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"name=zhangsan"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"age=18"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"sex=23"</span>;</div><div class="line"></div><div class="line"><span class="comment">//读取cookie</span></div><div class="line"><span class="keyword">var</span> result = <span class="built_in">document</span>.cookie;</div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<p>使用原生js操作cookie太过麻烦，尤其是cookie的获取和删除操作，使用jquery.cookie插件，能够简化我们的操作。</p>
+<p>【03-cookie存储（jquery插件）.html】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置cookie</span></div><div class="line">$.cookie(<span class="string">"name"</span>, <span class="string">"zs"</span>);</div><div class="line"><span class="comment">//获取cookie</span></div><div class="line"><span class="built_in">console</span>.log($.cookie(<span class="string">"name"</span>));</div><div class="line"><span class="comment">//删除cookie</span></div><div class="line">$.removeCookie(<span class="string">"name"</span>);</div></pre></td></tr></table></figure>
+<p><strong>使用cookie：操作太麻烦，最多只能存储4k ,每次请求都会带上cookie，所以用户名和密码、还有sessionID会存储在cookie中</strong>   </p>
+<h2 id="sessionStorage与localStorage"><a href="#sessionStorage与localStorage" class="headerlink" title="sessionStorage与localStorage"></a>sessionStorage与localStorage</h2><blockquote>
+<p>HTML5规范提出了解决方案，使用sessionStorage和localStorage存储数据。设置、读取、删除操作很方便</p>
+</blockquote>
+<p>window.sessionStorage的特点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 声明周期为关闭浏览器窗口</div><div class="line"><span class="number">2.</span> 不能在多个窗口下共享数据。</div><div class="line"><span class="number">3.</span> 大小为<span class="number">5</span>M</div></pre></td></tr></table></figure></p>
+<p>window.localStorage的特点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 永久生效，除非手动删除</div><div class="line"><span class="number">2.</span> 可以多个窗口共享</div><div class="line"><span class="number">3.</span> 大小为<span class="number">20</span>M</div></pre></td></tr></table></figure></p>
+<p>window.sessionStorage与window.localStorage的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">setItem(key, value) <span class="comment">//设置存储内容</span></div><div class="line">getItem(key) <span class="comment">//读取存储内容</span></div><div class="line">removeItem(key) <span class="comment">//删除键值为key的存储内容</span></div><div class="line">clear() <span class="comment">//清空所有存储内容</span></div><div class="line">key(n) <span class="comment">//以索引值来获取存储内容</span></div></pre></td></tr></table></figure></p>
+<p>【04-sessionStorage与localStorage的用法.html】</p>
+<p>【05-案例-换肤效果.html】</p>
+<p><strong>面试题：请描述一下cookies，sessionStorage和localStorage的区别？</strong></p>
+<h1 id="自定义播放器"><a href="#自定义播放器" class="headerlink" title="自定义播放器"></a>自定义播放器</h1><p>全屏切换API：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">video.requestFullScreen()</div><div class="line">div.webkitRequestFullScreen();</div><div class="line">div.mozRequestFullScreen();</div></pre></td></tr></table></figure></p>
+<p>方法：load()、play()、pause()<br>属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">currentTime:当前时间</div><div class="line">duration：总长时间</div><div class="line">timeupdate:播放进度更改时触发</div><div class="line">volume：控制音量</div></pre></td></tr></table></figure>
+<p>参考文档<br><a href="http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp</a></p>
+<p><strong><em>主要目的是练习一下video的属性和方法，还有之前我们学过的js</em></strong> </p>
+<p>推荐网站：<a href="https://www.awesomes.cn/" target="_blank" rel="external">https://www.awesomes.cn/</a></p>
+<p>video.js </p>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><blockquote>
+<p>通过FileReader对象我们可以读取本地存储的文件，可以使用 File 对象来指定所要读取的文件或数据。其中File对象可以是来自用户在一个<code>&lt;input&gt;</code>元素上选择文件后返回的FileList 对象，也可以来自由拖放操作生成的  DataTransfer</p>
+</blockquote>
+<h2 id="files"><a href="#files" class="headerlink" title="files"></a>files</h2><p>对于file类型的input框，在这个DOM对象中，存在一个files属性，这个属性是FileList对象，是一个伪数组，里面存储着上传的所有文件，当input框指定了multiple属性之后，就可以上传多个文件了。</p>
+<p>也就是说，通过files这个属性，我们就可以获取到所有上传的文件。</p>
+<h2 id="file对象"><a href="#file对象" class="headerlink" title="file对象"></a>file对象</h2><p>File对象中包含了文件的最后修改时间、文件名、文件类型等信息。</p>
+<h2 id="FileReader对象"><a href="#FileReader对象" class="headerlink" title="FileReader对象"></a>FileReader对象</h2><p>FileReader是一个HTML5新增的对象，用于读取文件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个fileReader对象</span></div><div class="line"><span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader;</div><div class="line"><span class="comment">//读取文件的两个方法</span></div><div class="line">readAsText() 以文本的方式读取文件 ,文本文件</div><div class="line">readAsDataURL() 以DataURL形式读取文件，图片，视频</div><div class="line"><span class="comment">//文件读取完成事件：</span></div><div class="line">fr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"><span class="comment">//当文件读取完成，可以通过result属性获取结果</span></div><div class="line">fr.result</div></pre></td></tr></table></figure></p>
+<p>参考资料：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc</a></p>
+<p>案例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">"file"</span>);</div><div class="line">    <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"></div><div class="line">    file.addEventListener(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.dir(file);</div><div class="line">        </div><div class="line">        <span class="comment">//files:里面存储了所有上传的文件</span></div><div class="line">        <span class="comment">//这个data就是我们上传的那个文件</span></div><div class="line">        <span class="keyword">var</span> data = file.files[<span class="number">0</span>]</div><div class="line">      </div><div class="line">        <span class="comment">//1. 创建一个文件读取器</span></div><div class="line">        <span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader();</div><div class="line"></div><div class="line">        <span class="comment">//2. 让文件读取器读取整个文件</span></div><div class="line">        fr.readAsDataURL(data);</div><div class="line"></div><div class="line">        <span class="comment">//3. 等待文件读取完</span></div><div class="line">        <span class="comment">//onload：文件读取完成后，就会触发</span></div><div class="line">        fr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">            img.src = fr.result;</div><div class="line">            box.innerHTML = <span class="string">""</span>;</div><div class="line">            box.appendChild(img);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h1 id="拖拽"><a href="#拖拽" class="headerlink" title="拖拽"></a>拖拽</h1><p>【01-拖拽初体验.html】</p>
+<p>【02-拖拽上传.html】</p>
+<p>在HTML5的规范中，我们可以通过为元素增加draggable=”true”来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启的。</p>
+<h2 id="拖拽元素"><a href="#拖拽元素" class="headerlink" title="拖拽元素"></a>拖拽元素</h2><p>页面中设置了draggable=”true”属性的元素，其中<code>&lt;img&gt;</code>、<code>&lt;a&gt;</code>标签默认是可以被拖拽的</p>
+<h2 id="目标元素"><a href="#目标元素" class="headerlink" title="目标元素"></a>目标元素</h2><p>页面中任何一个元素都可以成为目标元素</p>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>根据元素类型不同，需要设置不同的事件监听<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1、拖拽元素</span></div><div class="line">ondrag 		应用于拖拽元素，整个拖拽过程都会调用</div><div class="line">ondragstart	应用于拖拽元素，当拖拽开始时调用</div><div class="line">ondragend	应用于拖拽元素，当拖拽结束时调用</div><div class="line"><span class="comment">//2、目标元素</span></div><div class="line">ondragover	应用于目标元素，当停留在目标元素上时调用</div><div class="line">ondrop		应用于目标元素，当在目标元素上松开鼠标时调用(浏览器默认不让拖拽，需要阻止的默认行为。)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/17/56789/" data-id="cj6gcd1jb0001wc6tt3kpt8re" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-网络" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/17/网络/" class="article-date">
+  <time datetime="2017-08-17T01:11:32.151Z" itemprop="datePublished">2017-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网络状态"><a href="#网络状态" class="headerlink" title="网络状态"></a>网络状态</h1><blockquote>
+<p>在移动端，我们经常需要检测设置是在线还是离线，HTML5为此定义了一个navigator.onLine属性，这个属性用于检测设备是否联网。<strong><em>navigator.onLine</em></strong> 在不同浏览器中有细微的差别。</p>
+</blockquote>
+<h2 id="网络状态-1"><a href="#网络状态-1" class="headerlink" title="网络状态"></a>网络状态</h2><p>【01.网络状态.html】<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">navigator.onLine返回用户当前的网络状况，是一个布尔值</div><div class="line"><span class="number">1.</span> 如果浏览器连不上网(包括局域网)，就是离线状态，也就是脱机状态，会返回<span class="literal">false</span></div><div class="line"><span class="number">2.</span> 否则就是在线状态，返回<span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p><strong><em>注意：返回true不一定就是说一定能访问互联网，因为有可能连接的是局域网。但是返回false则表示一定连不上网。</em></strong></p>
+<h2 id="监听网络变化"><a href="#监听网络变化" class="headerlink" title="监听网络变化"></a>监听网络变化</h2><p>【02-判断网络状态.html】</p>
+<blockquote>
+<p>为了更好的确定网络是否连接，HTML5还定义了两个事件，用于监听网络状态的变化。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//网络连接时会被调用</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"online"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">"online"</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//网络断开时会被调用</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"offline"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">"offline"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="images/network.gif" alt=""></p>
+<h1 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h1><blockquote>
+<p>在HTML规范中，增加了获取用户地理信息的API，这样使得我们可以基于用户位置开发互联网应用，即基于位置服务LBS(Location Base Service)</p>
+</blockquote>
+<h2 id="隐私"><a href="#隐私" class="headerlink" title="隐私"></a>隐私</h2><p>HTML5规范提供了一套保护用户隐私的机制。必须先得到用户明确许可，才能获取用户的位置信息。<strong><em>在获取地理位置之前，会询问用户，只有在获得许可之后，才能获取到用户的位置信息。</em></strong> </p>
+<h2 id="相关的方法"><a href="#相关的方法" class="headerlink" title="相关的方法"></a>相关的方法</h2><p>【03-获取地理位置.html】<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//successCallback:获取成功后会调用,并返回一个position对象，里面包含了地理位置信息</span></div><div class="line"><span class="comment">//获取失败了会调用，并返回error对象，里面包含了错误信息。</span></div><div class="line"><span class="comment">//获取当前的地理位置信息</span></div><div class="line">navigator.geolocation.getCurrentPosition(successCallback, errorCallback)</div><div class="line"><span class="comment">//重复的获取当前的地理位置信息</span></div><div class="line">navigator.geolocation.watchPosition(successCallback, errorCallback)</div></pre></td></tr></table></figure></p>
+<p>实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span>(<span class="params">position</span>)</span>&#123;</div><div class="line">    <span class="comment">// 定位成功会调用该方法</span></div><div class="line">    <span class="comment">// position.coords.latitude 纬度</span></div><div class="line">    <span class="comment">// position.coords.longitude 经度</span></div><div class="line">    <span class="comment">// position.coords.accuracy 精度</span></div><div class="line">    <span class="comment">// position.coords.altitude 海拔高度</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</div><div class="line">    <span class="comment">// 定位失败会调用该方法</span></div><div class="line">    <span class="comment">// error 是错误信息</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong><em>在iOS 10中，苹果对webkit定位权限进行了修改，所有定位请求的页面必须是https协议的。</em></strong> </p>
+<h2 id="百度地图"><a href="#百度地图" class="headerlink" title="百度地图"></a>百度地图</h2><blockquote>
+<p>仅仅获取到经纬度对于用户来说意义并不大，因为用户也不知道经度和纬度表示的是地球上的哪一个地方，因为我们可以结合百度地图，准确的将用户的位置显示出来。</p>
+</blockquote>
+<p>百度地图官网：<a href="http://lbsyun.baidu.com/" target="_blank" rel="external">http://lbsyun.baidu.com/</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 在开发中，找到javascript API</div><div class="line"><span class="number">2.</span> 直接查看示例demo</div><div class="line"><span class="number">3.</span> 复制相应的代码，替换掉秘钥就行，秘钥只需创建一个新的应用就可以了。</div></pre></td></tr></table></figure>
+<p>【04-百度地图的用法.html】<br>【05-百度地图(设置新的图标).html】</p>
+<h1 id="web存储"><a href="#web存储" class="headerlink" title="web存储"></a>web存储</h1><blockquote>
+<p>在代码执行的时候，数据都是存储在内存中的，当页面关闭或者浏览器关闭的时候，内存就被释放掉了。数据只有存储在硬盘上，才不会被释放。</p>
+</blockquote>
+<p>【01-web存储初体验.html】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存储在内存中，会被释放</span></div><div class="line">    <span class="keyword">var</span> str = <span class="string">"hello world"</span>;</div><div class="line">    <span class="built_in">console</span>.log(str);</div><div class="line"></div><div class="line">    <span class="comment">//存储在硬盘上，不会被释放</span></div><div class="line">    localStorage.setItem(<span class="string">"name"</span>, <span class="string">"张三"</span>);</div><div class="line">    <span class="built_in">console</span>.log(localStorage.getItem(<span class="string">"name"</span>));</div></pre></td></tr></table></figure>
+<h2 id="cookie-了解"><a href="#cookie-了解" class="headerlink" title="cookie(了解)"></a>cookie(了解)</h2><blockquote>
+<p>传统方式，我们以document.cookie进行存储，但是存储起来特别麻烦，并且，存储大小只有4k，常用来做自动登录，即存储用户的账号和密码信息。每次请求都会带上cookie</p>
+</blockquote>
+<p>【02-cookie存储.html】<br>cookie是以字符串形式存在的，这个字符串有固定的格式：key=value;key1=value1;</p>
+<p>在获取cookie内容时，一般需要通过正则或者字符串的方法进行处理，转换成对象，最终得到数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"name=zhangsan"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"age=18"</span>;</div><div class="line"><span class="built_in">document</span>.cookie = <span class="string">"sex=23"</span>;</div><div class="line"></div><div class="line"><span class="comment">//读取cookie</span></div><div class="line"><span class="keyword">var</span> result = <span class="built_in">document</span>.cookie;</div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<p>使用原生js操作cookie太过麻烦，尤其是cookie的获取和删除操作，使用jquery.cookie插件，能够简化我们的操作。</p>
+<p>【03-cookie存储（jquery插件）.html】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置cookie</span></div><div class="line">$.cookie(<span class="string">"name"</span>, <span class="string">"zs"</span>);</div><div class="line"><span class="comment">//获取cookie</span></div><div class="line"><span class="built_in">console</span>.log($.cookie(<span class="string">"name"</span>));</div><div class="line"><span class="comment">//删除cookie</span></div><div class="line">$.removeCookie(<span class="string">"name"</span>);</div></pre></td></tr></table></figure>
+<p><strong>使用cookie：操作太麻烦，最多只能存储4k ,每次请求都会带上cookie，所以用户名和密码、还有sessionID会存储在cookie中</strong>   </p>
+<h2 id="sessionStorage与localStorage"><a href="#sessionStorage与localStorage" class="headerlink" title="sessionStorage与localStorage"></a>sessionStorage与localStorage</h2><blockquote>
+<p>HTML5规范提出了解决方案，使用sessionStorage和localStorage存储数据。设置、读取、删除操作很方便</p>
+</blockquote>
+<p>window.sessionStorage的特点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 声明周期为关闭浏览器窗口</div><div class="line"><span class="number">2.</span> 不能在多个窗口下共享数据。</div><div class="line"><span class="number">3.</span> 大小为<span class="number">5</span>M</div></pre></td></tr></table></figure></p>
+<p>window.localStorage的特点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 永久生效，除非手动删除</div><div class="line"><span class="number">2.</span> 可以多个窗口共享</div><div class="line"><span class="number">3.</span> 大小为<span class="number">20</span>M</div></pre></td></tr></table></figure></p>
+<p>window.sessionStorage与window.localStorage的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">setItem(key, value) <span class="comment">//设置存储内容</span></div><div class="line">getItem(key) <span class="comment">//读取存储内容</span></div><div class="line">removeItem(key) <span class="comment">//删除键值为key的存储内容</span></div><div class="line">clear() <span class="comment">//清空所有存储内容</span></div><div class="line">key(n) <span class="comment">//以索引值来获取存储内容</span></div></pre></td></tr></table></figure></p>
+<p>【04-sessionStorage与localStorage的用法.html】</p>
+<p>【05-案例-换肤效果.html】</p>
+<p><strong>面试题：请描述一下cookies，sessionStorage和localStorage的区别？</strong></p>
+<h1 id="自定义播放器"><a href="#自定义播放器" class="headerlink" title="自定义播放器"></a>自定义播放器</h1><p>全屏切换API：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">video.requestFullScreen()</div><div class="line">div.webkitRequestFullScreen();</div><div class="line">div.mozRequestFullScreen();</div></pre></td></tr></table></figure></p>
+<p>方法：load()、play()、pause()<br>属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">currentTime:当前时间</div><div class="line">duration：总长时间</div><div class="line">timeupdate:播放进度更改时触发</div><div class="line">volume：控制音量</div></pre></td></tr></table></figure>
+<p>参考文档<br><a href="http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp</a></p>
+<p><strong><em>主要目的是练习一下video的属性和方法，还有之前我们学过的js</em></strong> </p>
+<p>推荐网站：<a href="https://www.awesomes.cn/" target="_blank" rel="external">https://www.awesomes.cn/</a></p>
+<p>video.js </p>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><blockquote>
+<p>通过FileReader对象我们可以读取本地存储的文件，可以使用 File 对象来指定所要读取的文件或数据。其中File对象可以是来自用户在一个<code>&lt;input&gt;</code>元素上选择文件后返回的FileList 对象，也可以来自由拖放操作生成的  DataTransfer</p>
+</blockquote>
+<h2 id="files"><a href="#files" class="headerlink" title="files"></a>files</h2><p>对于file类型的input框，在这个DOM对象中，存在一个files属性，这个属性是FileList对象，是一个伪数组，里面存储着上传的所有文件，当input框指定了multiple属性之后，就可以上传多个文件了。</p>
+<p>也就是说，通过files这个属性，我们就可以获取到所有上传的文件。</p>
+<h2 id="file对象"><a href="#file对象" class="headerlink" title="file对象"></a>file对象</h2><p>File对象中包含了文件的最后修改时间、文件名、文件类型等信息。</p>
+<h2 id="FileReader对象"><a href="#FileReader对象" class="headerlink" title="FileReader对象"></a>FileReader对象</h2><p>FileReader是一个HTML5新增的对象，用于读取文件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个fileReader对象</span></div><div class="line"><span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader;</div><div class="line"><span class="comment">//读取文件的两个方法</span></div><div class="line">readAsText() 以文本的方式读取文件 ,文本文件</div><div class="line">readAsDataURL() 以DataURL形式读取文件，图片，视频</div><div class="line"><span class="comment">//文件读取完成事件：</span></div><div class="line">fr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"><span class="comment">//当文件读取完成，可以通过result属性获取结果</span></div><div class="line">fr.result</div></pre></td></tr></table></figure></p>
+<p>参考资料：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc</a></p>
+<p>案例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">"file"</span>);</div><div class="line">    <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"></div><div class="line">    file.addEventListener(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.dir(file);</div><div class="line">        </div><div class="line">        <span class="comment">//files:里面存储了所有上传的文件</span></div><div class="line">        <span class="comment">//这个data就是我们上传的那个文件</span></div><div class="line">        <span class="keyword">var</span> data = file.files[<span class="number">0</span>]</div><div class="line">      </div><div class="line">        <span class="comment">//1. 创建一个文件读取器</span></div><div class="line">        <span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader();</div><div class="line"></div><div class="line">        <span class="comment">//2. 让文件读取器读取整个文件</span></div><div class="line">        fr.readAsDataURL(data);</div><div class="line"></div><div class="line">        <span class="comment">//3. 等待文件读取完</span></div><div class="line">        <span class="comment">//onload：文件读取完成后，就会触发</span></div><div class="line">        fr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">            img.src = fr.result;</div><div class="line">            box.innerHTML = <span class="string">""</span>;</div><div class="line">            box.appendChild(img);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h1 id="拖拽"><a href="#拖拽" class="headerlink" title="拖拽"></a>拖拽</h1><p>【01-拖拽初体验.html】</p>
+<p>【02-拖拽上传.html】</p>
+<p>在HTML5的规范中，我们可以通过为元素增加draggable=”true”来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启的。</p>
+<h2 id="拖拽元素"><a href="#拖拽元素" class="headerlink" title="拖拽元素"></a>拖拽元素</h2><p>页面中设置了draggable=”true”属性的元素，其中<code>&lt;img&gt;</code>、<code>&lt;a&gt;</code>标签默认是可以被拖拽的</p>
+<h2 id="目标元素"><a href="#目标元素" class="headerlink" title="目标元素"></a>目标元素</h2><p>页面中任何一个元素都可以成为目标元素</p>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>根据元素类型不同，需要设置不同的事件监听<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1、拖拽元素</span></div><div class="line">ondrag 		应用于拖拽元素，整个拖拽过程都会调用</div><div class="line">ondragstart	应用于拖拽元素，当拖拽开始时调用</div><div class="line">ondragend	应用于拖拽元素，当拖拽结束时调用</div><div class="line"><span class="comment">//2、目标元素</span></div><div class="line">ondragover	应用于目标元素，当停留在目标元素上时调用</div><div class="line">ondrop		应用于目标元素，当在目标元素上松开鼠标时调用(浏览器默认不让拖拽，需要阻止的默认行为。)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/17/网络/" data-id="cj6fr4k9s0002io6tgknur47i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/17/笔记/" class="article-date">
+  <time datetime="2017-08-17T00:58:39.700Z" itemprop="datePublished">2017-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="移动web"><a href="#移动web" class="headerlink" title="移动web"></a>移动web</h1><h2 id="课时安排"><a href="#课时安排" class="headerlink" title="课时安排"></a>课时安排</h2><p>移动web总共6天课程</p>
+<ul>
+<li>移动web，就是移动设备上的网站，专门针对移动端【京东：流式布局】（3天）</li>
+<li>响应式布局，就是一个网站直接兼容PC端和移动端，不需要写两套代码。【微金所：bootstrap】（2天）</li>
+<li>移动web，更加流行的布局方式【苏宁：rem+less】（1天）</li>
+</ul>
+<p><strong>重点是移动web，因为响应式开发在国内还不是特别的流行，一般大公司基本都是PC端一套，移动端一套，只有一些小公司的官网或者比较简洁的网站会采用响应式开发。</strong></p>
+<h2 id="为什么要学习移动web"><a href="#为什么要学习移动web" class="headerlink" title="为什么要学习移动web"></a>为什么要学习移动web</h2><p>移动端已经从趋势变成主流了，互联网的流量入口在移动端已经远远的超过了PC端的流量入口。尤其是电商行业。</p>
+<p>参考网站：<a href="http://www.lanjinger.com/news/detail?id=24634" target="_blank" rel="external">http://www.lanjinger.com/news/detail?id=24634</a></p>
+<p><img src="image/jd_1.png" alt=""></p>
+<p><img src="image/jd_2.png" alt=""></p>
+<p>相关职位：【H5工程师】【 移动端工程师】</p>
+<h2 id="移动端的特点"><a href="#移动端的特点" class="headerlink" title="移动端的特点"></a>移动端的特点</h2><ul>
+<li>手机端的兼容性问题比PC端小很多，因为手机端的浏览器版本比较新</li>
+<li>手机端屏幕比较小，能够放的内容比较少。</li>
+</ul>
+<p>问题：布局的时候怎么解决屏幕大小不一致的问题？</p>
+<ul>
+<li>PC端，固定版心，让所有分辨率的电脑的版心都是一样的，比如京东</li>
+<li>移动端：移动端无法设置版心，因为移动端的设备屏幕本身就小，设置版心不合适。因此移动端大多会采用流式布局（百分比布局）</li>
+</ul>
+<h2 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h2><p>流式布局，也叫百分比布局，是移动端开发中经常使用的布局方式之一。</p>
+<p>流式布局的特征：</p>
+<ul>
+<li>宽度自适应，高度写死，并不是百分百还原设计图</li>
+<li>图标都是固定死大小的，包括字体等也是固定死的。并不是所有的东西都是自适应的。</li>
+<li>一些大的图片，设置宽度为百分比自适应即可，随着屏幕大小进行变化</li>
+</ul>
+<p><strong>流式布局无法做到所有设备都非常逼真的还原设计图，有些设备显示效果不是特别的好看。但是流式布局是移动端非常常用的一种布局方式，比较简单，需要掌握（携程、京东)</strong></p>
+<font color="red"><b>最后一天会学习rem布局，配合less非常的方便，并且能够实现完全的自适应，包括字体以及图标等</b></font>
+
+
+
+<p>经典的流式布局</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 左侧固定，右侧自适应</span></div><div class="line"><span class="comment">//2. 右侧固定，左侧自适应</span></div><div class="line"><span class="comment">//3. 两侧固定，中间自适应（圣杯布局）</span></div><div class="line"><span class="comment">//4. 等分布局</span></div></pre></td></tr></table></figure>
+<h2 id="手机模拟器"><a href="#手机模拟器" class="headerlink" title="手机模拟器"></a>手机模拟器</h2><p>手机设备五花八门，屏幕尺寸都大不一样，尤其是安卓端，给我们的页面预览带来了一些麻烦。在实际工作中，作为开发者不可能有足够的设备让我们去测试（<strong>除了测试部门</strong> ），即便有，效率也特别的低，因此开发者一般都是通过浏览器的手机模拟器来模拟不同的设备。</p>
+<p>按F12打开控制台，点击小手机图标，可以进行手机与PC的预览切换。</p>
+<p><img src="image/jd_3.png" alt=""></p>
+<h2 id="视口viewport"><a href="#视口viewport" class="headerlink" title="视口viewport"></a>视口viewport</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">问题：一个电脑上的网站，在手机端访问，效果是什么样的？</div><div class="line"></div><div class="line">iPhone5的设备宽度只有320px，一张宽度为640px的图片在手机端访问，显示的效果是什么？</div><div class="line"></div><div class="line">1. 在手机端，html的大小都是980px，为什么？</div><div class="line">这主要是历史原因导致的，因为在移动设备刚流行的时候，网站大多都是pc端的，pc端的页面宽度一般都比较大，移动设备的宽度比较小，如果pc端页面直接在移动端显示的话，页面就会错乱。为了解决这个问题，移动端html的大小直接就定死成了980px（因为早起的pc端网站版心就是980px居多）。</div><div class="line"></div><div class="line">2. 视口</div><div class="line">在pc端，html的大小默认是继承了浏览器的宽度，即浏览器多宽，html的大小就是多宽，但是在移动端，多出来了一个视口的概念（乔布斯）,视口说白了就是介于浏览器与html之间的一个东西，视口的宽度默认定死了980px，因此html的宽度默认就是980px，视口的特点是能够根据设备的宽度进行缩放。</div><div class="line"></div><div class="line">3. 视口设置。</div><div class="line">对于现在的移动端页面来说，视口默认为980px肯定不合适，因为设备宽度不够的话，视口会进行缩放，导致页面展示效果不好看。</div></pre></td></tr></table></figure>
+<p><strong>视口参数设置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//width 设置视口的宽度</span></div><div class="line"><span class="comment">//width=device-width   设置视口宽度为设备的宽度（常用）。</span></div><div class="line"></div><div class="line"><span class="comment">//initial-scale 设置初始缩放比例</span></div><div class="line"><span class="comment">//initial-scale=1.0  表示不缩放</span></div><div class="line"></div><div class="line"><span class="comment">//user-scalable 设置是否允许用户缩放</span></div><div class="line"><span class="comment">//user-scalable=no  不允许用户缩放</span></div><div class="line"></div><div class="line"><span class="comment">//maximum-scale  设置允许的最大缩放比例</span></div><div class="line"><span class="comment">//maximum-scale=1.0  可以不设置，因为都禁止用户缩放了。</span></div><div class="line"></div><div class="line"><span class="comment">//minimum-scale 设置允许最小缩放比</span></div><div class="line"><span class="comment">//minimum-scale=1.0  不设置，因为都禁用用户缩放了。</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//标准写法：</span></div><div class="line"><span class="comment">//快捷键：  meta:vp + tab键</span></div><div class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0"</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="2倍图"><a href="#2倍图" class="headerlink" title="2倍图"></a>2倍图</h2><blockquote>
+<p>以后同学在工作的过程中，从UI那拿到的设计图通常都是640的设计图或者是750的设计图.</p>
+</blockquote>
+<p>大家在买手机的时候肯定听说过屏幕分辨率：比如：480x800, 480x854, 540x960, 720x1280, 1080x1920，而且还有传说中的2K屏。近年来iPhone的屏幕分辨率也加剧了：640x960, 640x1136, 750x1334, 1242x2208。 手机屏幕那么，是如何做到的呢？<br>所谓的高清屏，其实就是把更多的像素点压缩至一块屏幕里，从而达到更高的分辨率并提高屏幕显示的细腻程度。</p>
+<p>设备像素比devicePixelRatio：即像素的压缩比例</p>
+<p><img src="image/jd_4.png" alt=""></p>
+<p><strong>结论 ：在移动端为了在高清屏手机上显示得更加细腻，通常会使用更大的图片，比如2倍图或者3倍图。</strong></p>
+<h1 id="JDM"><a href="#JDM" class="headerlink" title="JDM"></a>JDM</h1><h2 id="动态改变透明度"><a href="#动态改变透明度" class="headerlink" title="动态改变透明度"></a>动态改变透明度</h2><blockquote>
+<p>通过京东官网，我们能够发现随着滚动距离的增加，header的opacity逐渐的由0变成了0.9</p>
+</blockquote>
+<ul>
+<li>需求：随着滚动距离的增加，header的opacity从0逐渐变成0.9，当距离超过600时，固定为0.9</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 给window注册一个onscroll事件</span></div><div class="line"><span class="comment">//2. 获取scrollTop的值</span></div><div class="line"><span class="comment">// 2.1 当scrollTop&lt;600时   scrollTop/600 = opacity值/0.9</span></div><div class="line"><span class="comment">// 2.2 当scrollTop &gt;= 600时， scrollTop = 0.9</span></div></pre></td></tr></table></figure>
+<p><strong><em>tips:使用rgba设置背景颜色更加的方便。</em></strong> </p>
+<h2 id="设置秒杀ul的宽度"><a href="#设置秒杀ul的宽度" class="headerlink" title="设置秒杀ul的宽度"></a>设置秒杀ul的宽度</h2><p>获取li的宽度，使用li的个数乘以li的宽度即可。</p>
+<h2 id="京东快报无缝滚动"><a href="#京东快报无缝滚动" class="headerlink" title="京东快报无缝滚动"></a>京东快报无缝滚动</h2><blockquote>
+<p>实现京东快报每2秒钟滚动一次，要求无缝</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//思路：</span></div><div class="line">	<span class="comment">//1. 复制第一个li添加到ul的最后面。</span></div><div class="line">	<span class="comment">//2. 使用定时器让ul进行滚动   </span></div><div class="line">		<span class="comment">//2.1 设置下标index++   2.2 设置过渡  2.3 使用translateY进行滚动</span></div><div class="line">	<span class="comment">//3. 给ul注册过渡结束事件，当ul需要瞬间变回来。</span></div></pre></td></tr></table></figure>
+<h2 id="倒计时"><a href="#倒计时" class="headerlink" title="倒计时"></a>倒计时</h2><blockquote>
+<p>真实开发过程中，倒计时所用的时间肯定是服务端的时候，因为用户本地的事件可以修改。</p>
+</blockquote>
+<p>思路</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 获取时间差(单位秒)  (秒杀时间-当前时间)/1000</span></div><div class="line"><span class="comment">//2. 设置小时</span></div><div class="line"><span class="comment">//3. 设置分钟</span></div><div class="line"><span class="comment">//4. 设置秒钟</span></div><div class="line"><span class="comment">//5. 如果时间小于等于0，清除定时器</span></div></pre></td></tr></table></figure>
+<h2 id="轮播图"><a href="#轮播图" class="headerlink" title="轮播图"></a>轮播图</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 页面结构：首尾都需要放一张假图片</span></div><div class="line"><span class="comment">//2. 初始化index=1</span></div><div class="line"><span class="comment">//3. 设置定时器让ul移动， 设置下标index++  设置过渡  使用translateX进行滚动</span></div><div class="line"><span class="comment">//4. 给ul注册过渡结束事件，当ul需要瞬间变回来。 让点跟着移动</span></div></pre></td></tr></table></figure>
+<h2 id="touch事件"><a href="#touch事件" class="headerlink" title="touch事件"></a>touch事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//touchstart:手指放到屏幕上时触发</span></div><div class="line"><span class="comment">//touchmove:手指在屏幕上滑动式触发（会触发多次）</span></div><div class="line"><span class="comment">//touchend:手指离开屏幕时触发</span></div><div class="line"><span class="comment">//touchcancel:系统取消touch事件的时候触发,比如电话</span></div></pre></td></tr></table></figure>
+<p>每个触摸事件被触发后，会生成一个event对象，event对象里额外包括以下三个触摸列表</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">touches: <span class="comment">//当前屏幕上所有手指的列表</span></div><div class="line">targetTouches: <span class="comment">//当前dom元素上手指的列表</span></div><div class="line">changedTouches: <span class="comment">//涉及当前事件的手指的列表，touchend时，只有这个属性会有值</span></div></pre></td></tr></table></figure>
+<p>这些列表里的每次触摸由touch对象组成，touch对象里包含着触摸信息，主要属性如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">clientX / clientY: <span class="comment">//触摸点相对浏览器窗口的位置</span></div><div class="line">pageX / pageY: <span class="comment">//触摸点相对于页面的位置</span></div><div class="line">screenX / screenY: <span class="comment">//触摸点相对于屏幕的位置</span></div><div class="line">identifier: <span class="comment">//touch对象的ID</span></div><div class="line">target: <span class="comment">//当前的DOM元素</span></div></pre></td></tr></table></figure>
+<h2 id="通过touch滑动轮播图"><a href="#通过touch滑动轮播图" class="headerlink" title="通过touch滑动轮播图"></a>通过touch滑动轮播图</h2><p>思路</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 计算触摸移动的距离  （注意给ul清除浮动，不然触发不了touchmove事件）</span></div><div class="line"><span class="comment">//2. 根据触摸的距离移动imgBox（需要清除过渡）</span></div><div class="line"><span class="comment">//3. 根据滑动距离，和时间，判断是否吸附 </span></div><div class="line"><span class="comment">//4. 重置滑动距离和滑动时间</span></div></pre></td></tr></table></figure>
+<h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h1><h2 id="什么是响应式布局"><a href="#什么是响应式布局" class="headerlink" title="什么是响应式布局"></a>什么是响应式布局</h2><blockquote>
+<p>响应式布局（respond layout）是Ethan Marcotte在2010年5月份提出的一个概念，简而言之，就是<strong>一个网站能够兼容多个终端</strong> ——而不是为每个终端做一个特定的版本。这个概念是为解决移动互联网浏览而诞生的。</p>
+</blockquote>
+<p>为什么要有响应式布局？</p>
+<ul>
+<li>在移动互联日益成熟的时候，在PC端开发的网页已经无法满足移动设备的要求。</li>
+<li>通常的做法是针对移动端单独做一套特定的版本。</li>
+<li>如果终端越来越多，那么需要开发的版本就会越来越多（大屏设备的普及）</li>
+<li><strong>响应式布局</strong> ：一个网站能够兼容多个终端（节约开发成本）</li>
+</ul>
+<p>响应式开发现状：</p>
+<ul>
+<li><p>如果已经存在PC的网站了，那么一般不会使用响应式开发，而是针对移动端再开发一套系统（比如京东、淘宝）</p>
+</li>
+<li><p>在<strong>新建站点</strong> 上采用响应式开发的越来越多。</p>
+</li>
+<li><p>在国内，响应式开发还不是特别的流行。但响应式开发是大势所趋，会越来越流行。</p>
+</li>
+</ul>
+<h2 id="响应式开发与移动web开发的比较"><a href="#响应式开发与移动web开发的比较" class="headerlink" title="响应式开发与移动web开发的比较"></a>响应式开发与移动web开发的比较</h2><table>
+<thead>
+<tr>
+<th>开发方式</th>
+<th>移动web开发+pc开发</th>
+<th>响应式开发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引用场景</td>
+<td>一般已经有了PC端网站，只需要端独开发移动端网站即可</td>
+<td>针对一些新建网站，并且要求适配移动端</td>
+</tr>
+<tr>
+<td>开发</td>
+<td>针对性强，开发效率高</td>
+<td>兼容各种终端，效率低</td>
+</tr>
+<tr>
+<td>适配</td>
+<td>只能适配移动端或者PC端，pad上体验比较差</td>
+<td>可以适配各种终端</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>代码简介，加载快</td>
+<td>代码相对复杂，加载慢</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//思考：响应式开发的原理是什么？</span></div></pre></td></tr></table></figure>
+<h1 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h1><blockquote>
+<p>媒体查询（Media Query）是CSS提出来的一个新的属性，通过媒体查询可以查询到screen的宽度，从而指定某个宽度区间的网页布局。</p>
+</blockquote>
+<h2 id="设备分类"><a href="#设备分类" class="headerlink" title="设备分类"></a>设备分类</h2><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>宽度范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大屏设备</td>
+<td>&gt;1200px</td>
+</tr>
+<tr>
+<td>中屏设备</td>
+<td>992px~1200px</td>
+</tr>
+<tr>
+<td>小屏设备</td>
+<td>768px~992px</td>
+</tr>
+<tr>
+<td>超小屏设备</td>
+<td>&lt; 768px</td>
+</tr>
+</tbody>
+</table>
+<p><img src="image/1.png" alt=""></p>
+<h2 id="媒体查询的使用"><a href="#媒体查询的使用" class="headerlink" title="媒体查询的使用"></a>媒体查询的使用</h2><p>需求：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment">需求：</span></div><div class="line"><span class="comment">    大屏设备(&gt;1200px)   版心：1170px   背景色：红色</span></div><div class="line"><span class="comment">    中屏设备(992-1200)  版心：970px    背景色：蓝色</span></div><div class="line"><span class="comment">    小屏设备(768-992)   版心：750px    背景色：黄色</span></div><div class="line"><span class="comment">    超小屏设备(&lt;768px)  版心：100%     背景色：绿色</span></div><div class="line"><span class="comment">--&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>响应式开发的原理：使用媒体查询实现不同终端的布局和样式的切换。</strong></p>
+<p>媒体查询语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*查询屏幕*/</span></div><div class="line">@<span class="keyword">media</span> screen and 条件 &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*条件的写法*/</span></div><div class="line"><span class="comment">/*min-width:只要屏幕宽度超过这个值的设备样式就能生效*/</span></div><div class="line"><span class="comment">/*max-width:只要屏幕宽度小于这个值的设备样式就能生效*/</span></div><div class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">1200px</span>) &#123;</div><div class="line">  <span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">1170px</span>;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">992px</span>) and (max-width: <span class="number">1200px</span>) &#123;</div><div class="line">  <span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">970px</span>;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">768px</span>) and (max-width: <span class="number">992px</span>) &#123;</div><div class="line">  <span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">750px</span>;</div><div class="line">    <span class="attribute">background-color</span>: yellow;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">768px</span>) &#123;</div><div class="line">  <span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">background-color</span>: green;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>弊端：现在只有一个div，要做一套响应式布局，就需要如此多的代码，非常的麻烦，因此我们会更多的借助一些响应式的框架，比如bootstrap。</strong></p>
+<h1 id="bootstrap框架"><a href="#bootstrap框架" class="headerlink" title="bootstrap框架"></a>bootstrap框架</h1><blockquote>
+<p>Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。</p>
+</blockquote>
+<p><a href="http://www.bootcss.com/" target="_blank" rel="external">bootstrap中文网</a></p>
+<p>特点：</p>
+<ul>
+<li>组件简洁大方、代码规范精简、界面自定义性强。</li>
+<li>​Bootstrap是基于HTML5和CSS3开发的，它在jQuery的基础上进行了更为个性化和人性化的完善，形成一套自己独有的网站风格，并兼容大部分jQuery插件。</li>
+<li>​Bootstrap中包含了丰富的Web组件，根据这些组件，可以快速的搭建一个漂亮、功能完备的网站。</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>有自己的生态圈，不断的更新迭代</li>
+<li>提供了一套简洁、直观、强悍的组件</li>
+<li>标准化的HTML+CSS编码规范</li>
+<li>让开发更简单，提高了开发效率。</li>
+<li>扩展性强，虽然界面组件样式已经定义好了，我们还可以自定义，修改默认样式。</li>
+</ul>
+<p>版本：</p>
+<ul>
+<li>2.x.x 停止维护<ul>
+<li>优点：兼容性好</li>
+<li>缺点：代码不够简洁、功能不够完善</li>
+</ul>
+</li>
+<li>3.x.x <strong>目前使用最多</strong><ul>
+<li>优点：稳定，偏向于开发响应式布局，移动设备优先的WEB项目</li>
+<li>缺点：放弃了IE67，对IE8支持但是界面效果不友好</li>
+</ul>
+</li>
+<li>4.x.x 测试阶段</li>
+</ul>
+<h2 id="基本模板"><a href="#基本模板" class="headerlink" title="基本模板"></a>基本模板</h2><p>目录结构说明</p>
+<p><img src="image/2.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="comment">&lt;!--使用HTML5文档，使用中文简体--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--meta1. 使用utf-8编码--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--meta2. 当前页面在在IE浏览器访问时，使用最新的ie浏览器内核进行渲染--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--meta3. 视口设置--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, user-scalable=no"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都必须跟随其后！ --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>bootstrap基本模板<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="comment">&lt;!--引入bootstrap的核心样式文件--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"lib/bootstrap/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="comment">&lt;!-- html5shiv是用来解决IE8以下浏览器不支持HTML5语义化标签的问题 --&gt;</span></div><div class="line">  <span class="comment">&lt;!--respond是用来解决IE8以下浏览器不支持媒体查询的问题，注意：respond不支持file协议打开--&gt;</span></div><div class="line">  <span class="comment">&lt;!--条件注释：IE浏览器专属--&gt;</span></div><div class="line">  <span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">  &lt;script src="lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">  &lt;script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">  &lt;![endif]--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--bootstrap依赖与jquery，因此需要在bootstrap之前引入jquery文件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"lib/jquery/jquery-1.12.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--引入bootstrap的核心js文件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"lib/bootstrap/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h2><h3 id="normalize-css"><a href="#normalize-css" class="headerlink" title="normalize.css"></a>normalize.css</h3><blockquote>
+<p>Normalize.css是一种CSS reset的替代方案。经过@necolas和@jon_neal花了几百个小时来努力研究不同浏览器的默认样式的差异，这个项目终于变成了现在这样。</p>
+</blockquote>
+<p><a href="http://necolas.github.io/normalize.css/" target="_blank" rel="external">官网</a></p>
+<p><a href="https://github.com/necolas/normalize.css" target="_blank" rel="external">github网址</a></p>
+<p>normalize的特点：</p>
+<ul>
+<li><strong>保护有用的浏览器默认样式</strong>而不是完全去掉它们</li>
+<li><strong>一般化的样式</strong>：为大部分HTML元素提供</li>
+<li><strong>修复浏览器自身的bug</strong>并保证各浏览器的一致性</li>
+<li><strong>优化CSS可用性</strong>：用一些小技巧</li>
+<li><strong>解释代码</strong>：用注释和详细的文档来</li>
+</ul>
+<p><strong><code>Normalize.css</code>支持包括手机浏览器在内的超多浏览器，同时对HTML5元素、排版、列表、嵌入的内容、表单和表格都进行了一般化。尽管这个项目基于一般化的原则，但我们还是在合适的地方使用了更实用的默认值。</strong></p>
+<p><a href="http://www.cnblogs.com/webpush/p/4974063.html" target="_blank" rel="external">Normalize.css与CSS reset区别</a></p>
+<h3 id="container容器"><a href="#container容器" class="headerlink" title="container容器"></a>container容器</h3><p>Bootstrap 需要为页面内容和栅格系统包裹一个 .container 容器。默认带了15px的padding值。</p>
+<p><code>.container</code> 类用于固定宽度并支持响应式布局的容器。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>.container-fluid</code> 类用于 100% 宽度，占据全部视口（viewport）的容器。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>这两种 容器类不能互相嵌套。</strong> </p>
+<h3 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h3><p>栅格系统，也叫网格系统</p>
+<ul>
+<li><code>.row</code>用于抵消<code>.container</code>容器的15px的padding值</li>
+<li>可以在<code>.row</code>中嵌套<code>column</code></li>
+</ul>
+<p>栅格系统常用类（总共12列）</p>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>例子</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.col-xs-xx</td>
+<td>.col-xs-6</td>
+<td>在超小屏幕（及以上）生效</td>
+</tr>
+<tr>
+<td>.col-sm-xx</td>
+<td>.col-sm-6</td>
+<td>在小屏幕（及以上）生效</td>
+</tr>
+<tr>
+<td>.col-md-xx</td>
+<td>.col-md-6</td>
+<td>在中屏幕（及以上）生效</td>
+</tr>
+<tr>
+<td>.col-lg-xx</td>
+<td>.col-lg-3</td>
+<td>在大屏幕及生效，占1/4</td>
+</tr>
+<tr>
+<td>.col-lg-xx</td>
+<td>.col-lg-4</td>
+<td>在大屏幕及生效，占1/3</td>
+</tr>
+<tr>
+<td>.col-lg-xx</td>
+<td>.col-lg-5</td>
+<td>在大屏幕及生效，占1/2</td>
+</tr>
+</tbody>
+</table>
+<p>【案例：响应式栅格系统】</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment">需求：</span></div><div class="line"><span class="comment">  1. 在大屏时显示6个等分的列</span></div><div class="line"><span class="comment">  2. 在中屏时显示4个等分的列</span></div><div class="line"><span class="comment">  3. 在小屏时显示3个等分的列</span></div><div class="line"><span class="comment">  4. 在超小屏时显示2个等分的列</span></div><div class="line"><span class="comment">--&gt;</span></div></pre></td></tr></table></figure>
+<p>【案例：列嵌套.html】</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-4"</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!--栅格系统无处不在，只要父盒子有宽度，就可以使用栅格系统--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-6"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-6"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>【案例：列偏移.html】</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 使用 .col-md-offset-* 类可以将列向右侧偏移。--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--col-lg-offset-3:在大屏下，这个div将向右侧偏移3个单位--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-6 col-lg-offset-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>【案例：列排序.html】</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--col-lg-push-9:往后推9格--&gt;</span></div><div class="line">  <span class="comment">&lt;!--col-lg-pull-3:往前拉3格--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-3 col-lg-push-9"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-9 col-lg-pull-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="响应式工具"><a href="#响应式工具" class="headerlink" title="响应式工具"></a>响应式工具</h3><p><img src="image/3.png" alt=""></p>
+<p><strong>推荐使用hidden相关的属性</strong></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>bootstrap内置的东西是在太多，不可能每一个都详细的讲，但是bootstrap文档简洁明了，当我们用到了相关的东西的时候，再来详细的进行讲解。</p>
+<h1 id="微金所"><a href="#微金所" class="headerlink" title="微金所"></a>微金所</h1><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul>
+<li>wjs………….项目文件夹<ul>
+<li>js……………….js文件目录      </li>
+<li>lib………………第三方框架目录</li>
+<li>images……………图片文件目录</li>
+<li>css………………css文件目录</li>
+<li>fonts…………..字体图标目录</li>
+<li>favicon.ico……….网站图标</li>
+<li>index.html………..站点入口</li>
+</ul>
+</li>
+</ul>
+<p>引入字体图标</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">href</span>=<span class="string">"favicon.ico"</span> <span class="attr">type</span>=<span class="string">"image/x-icon"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="页面结构"><a href="#页面结构" class="headerlink" title="页面结构"></a>页面结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--头部开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_header"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--头部结束--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--导航开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_nav"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--导航结束--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--轮播图开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_banner"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--轮播图结束--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--信息开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_info"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--信息结束--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--产品开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_product"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--产品结束--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--新闻开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_news"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--新闻结束--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--合作伙伴开始--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wjs_partner"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--合作伙伴结束--&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="自定义字体图标"><a href="#自定义字体图标" class="headerlink" title="自定义字体图标"></a>自定义字体图标</h2><p><strong>1.定义font-family</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">'wjs_fonts'</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'../fonts/MiFie-Web-Font.eot'</span>); <span class="comment">/* IE9*/</span></div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'../fonts/MiFie-Web-Font.eot#iefix'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>), <span class="comment">/* IE6-IE8 */</span></div><div class="line">  <span class="built_in">url</span>(<span class="string">'../fonts/MiFie-Web-Font.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>), <span class="comment">/* chrome, firefox */</span></div><div class="line">  <span class="built_in">url</span>(<span class="string">'../fonts/MiFie-Web-Font.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>), <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+*/</span></div><div class="line">  <span class="built_in">url</span>(<span class="string">'../fonts/MiFie-Web-Font.svg#iconfont'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>); <span class="comment">/* iOS 4.1- */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2.定义wjs_icon类</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wjs_icon</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">'wjs_fonts'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>3.使用伪元素定义对应的图标类</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wjs_icon_phone</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">"\e908"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.wjs_icon_tel</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">"\e909"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>4.使用字体图标</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"wjs_icon wjs_icon_phone"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="bootstrap定制"><a href="#bootstrap定制" class="headerlink" title="bootstrap定制"></a>bootstrap定制</h2><blockquote>
+<p>像导航栏这种组件，bootstrap已经给我们预定义了很多的样式，但是我们需要修改其中的某一些样式，绝对不能修改bootstrap的源代码，因为这样会影响其他人的使用，所以我们需要自己写一些样式去覆盖bootstrap的样式。</p>
+</blockquote>
+<p>做法：</p>
+<p>​    在<code>index.css</code>中书写对应的代码，覆盖bootstrap原来的代码即可。</p>
+<h1 id="LESS"><a href="#LESS" class="headerlink" title="LESS"></a>LESS</h1><h2 id="Less简介"><a href="#Less简介" class="headerlink" title="Less简介"></a>Less简介</h2><blockquote>
+<p>CSS 需要书写大量看似没有逻辑的代码，不方便维护及扩展，不利于复用。成这些困难的很大原因源于 CSS 是一门非程序式语言，没有变量、函数、SCOPE（作用域）等概念。LESS 为 Web 开发者带来了福音，它在 CSS 的语法基础之上，引入了变量，Mixin（混入），运算以及函数等功能，大大简化了 CSS 的编写，并且降低了 CSS 的维护成本，就像它的名称所说的那样，LESS 可以让我们用更少的代码做更多的事情。</p>
+</blockquote>
+<p>本质上，LESS 包含一套自定义的语法及一个解析器，用户根据这些语法定义自己的样式规则，这些规则最终会通过解析器，编译生成对应的 CSS 文件。LESS 并没有裁剪 CSS 原有的特性，更不是用来取代 CSS 的，而是在现有 CSS 语法的基础上，为 CSS 加入程序式语言的特性。</p>
+<p>学习网站：</p>
+<p><a href="http://lesscss.org/" target="_blank" rel="external">官网http://lesscss.org/</a><br><a href="http://www.1024i.com/demo/less/" target="_blank" rel="external">中文网http://lesscss.cn/</a></p>
+<h2 id="LESS安装"><a href="#LESS安装" class="headerlink" title="LESS安装"></a>LESS安装</h2><blockquote>
+<p>安装less，需要先安装node，因为less环境是依赖与node环境的。</p>
+</blockquote>
+<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><ol>
+<li>下载node安装包（已经提供）</li>
+<li>双击安装（推荐安装在C盘，方便查找）</li>
+<li>在cmd命令行中输入<code>node -v</code>以及<code>npm -v</code>查看是否安装成功</li>
+</ol>
+<p><img src="image/less_01.png" alt="images"></p>
+<h3 id="安装less"><a href="#安装less" class="headerlink" title="安装less"></a>安装less</h3><p>在cmd命令行中输入以下代码:<strong>需要联网</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g less</div></pre></td></tr></table></figure>
+<p>等待安装完成,然后输入以下命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lessc -v   <span class="comment">//查看less的版本</span></div></pre></td></tr></table></figure>
+<p><img src="image/less_02.png" alt=""></p>
+<h3 id="关于npm"><a href="#关于npm" class="headerlink" title="关于npm"></a>关于npm</h3><blockquote>
+<p>npm是nodejs官方为nodejs定制的一个工具，是Node.js的包管理器，是Node Packaged Modules的简称，通过npm可以下载安装nodejs的模块包，nodejs有很多优秀的模块包可以让开发这快速开发。，<strong><em>新版的nodejs已经集成了npm</em></strong> </p>
+</blockquote>
+<ul>
+<li>npm允许用户从NPM服务器下载别人编写的第三方包到本地使用。</li>
+<li>npm允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。</li>
+<li>npm允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。</li>
+</ul>
+<h3 id="webstorm配置less"><a href="#webstorm配置less" class="headerlink" title="webstorm配置less"></a>webstorm配置less</h3><p><code>文件</code>–&gt;<code>设置</code>–&gt;<code>工具</code>–&gt;<code>File Watchers</code>–&gt;<code>右侧绿色的+号</code>–&gt;<code>less</code></p>
+<p><img src="image/less_03.png" alt=""></p>
+<h2 id="Less语法"><a href="#Less语法" class="headerlink" title="Less语法"></a>Less语法</h2><h3 id="less初体验"><a href="#less初体验" class="headerlink" title="less初体验"></a>less初体验</h3><p>新建一个less文件，输入以下代码:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@color:</span>red;</div><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">color</span>:<span class="variable">@color</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，webstorm自动的帮我们生成了对应的css文件。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>注释</strong></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*这个注释是CSS中的注释，因此会编译到css中*/</span></div><div class="line"><span class="comment">//这个注释,CSS中用不了，因此不会编译出来。</span></div></pre></td></tr></table></figure>
+<p><strong>变量</strong></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"><span class="variable">@maincolor:</span><span class="number">#e92322</span>;</div><div class="line"><span class="variable">@director:</span>right;</div><div class="line"><span class="attribute">a</span>:hover &#123;</div><div class="line">  <span class="comment">//直接使用</span></div><div class="line">  <span class="attribute">color</span>: <span class="variable">@maincolor</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//拼接使用，如果是拼接使用变量，需要加上&#123;&#125;</span></div><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="selector-tag">border-</span><span class="variable">@&#123;director&#125;</span>: <span class="selector-tag">1px</span> <span class="selector-tag">solid</span> @<span class="selector-tag">maincolor</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="mixin混入"><a href="#mixin混入" class="headerlink" title="mixin混入"></a>mixin混入</h3><p><strong>混入样式类</strong></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"><span class="comment">//混入</span></div><div class="line"><span class="selector-class">.btn</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.btn_border</span> &#123;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.btn_danger</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.btn_block</span> &#123;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//混入其他类的样式。</span></div><div class="line"><span class="selector-class">.my_btn</span> &#123;</div><div class="line">  <span class="selector-class">.btn</span>();</div><div class="line">  <span class="selector-class">.btn_block</span>();</div><div class="line">  <span class="selector-class">.btn_border</span>();</div><div class="line">  <span class="selector-class">.btn_danger</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后的css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"><span class="selector-class">.btn</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.btn_border</span> &#123;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.btn_danger</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.btn_block</span> &#123;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.my_btn</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>缺点：写了很多类，但是都编译到css文件中了，其实我们需要的仅仅是.my_btn这一个类。</p>
+<p><strong>混入函数</strong></p>
+<p>不带参数的函数</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"></div><div class="line"><span class="comment">//不会被编译</span></div><div class="line"><span class="selector-class">.btn</span>() &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.my_btn</span> &#123;</div><div class="line">  <span class="selector-class">.btn</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>带参数的函数</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.btn_border</span>(<span class="variable">@width</span>) &#123;</div><div class="line">  <span class="attribute">border</span>: <span class="variable">@width</span> solid <span class="number">#000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.my_btn</span> &#123;</div><div class="line">  <span class="comment">//如果函数定义了参数，调用的时候必须传入参数，否则会报错</span></div><div class="line">  <span class="selector-class">.btn_border</span>();</div><div class="line">  <span class="comment">//传入参数，就不会报错</span></div><div class="line">  <span class="selector-class">.btn_border</span>(<span class="number">10px</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>带默认值的函数</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.btn_border</span>(<span class="variable">@width</span>:<span class="number">1px</span>) &#123;</div><div class="line">  <span class="attribute">border</span>: <span class="variable">@width</span> solid <span class="number">#000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.my_btn</span> &#123;</div><div class="line">  <span class="comment">//因为有默认值，所以不会报错</span></div><div class="line">  <span class="selector-class">.btn_border</span>();</div><div class="line">  <span class="comment">//传入参数，会覆盖1px，也不会报错</span></div><div class="line">  <span class="selector-class">.btn_border</span>(<span class="number">10px</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>应用：定义兼容多浏览器的圆角</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"><span class="selector-class">.border_radius</span>(<span class="variable">@value</span>:<span class="number">5px</span>) &#123;</div><div class="line">  <span class="attribute">-webkit-border-radius</span>:<span class="variable">@value</span>;</div><div class="line">  <span class="attribute">-moz-border-radius</span>:<span class="variable">@value</span>;</div><div class="line">  <span class="attribute">-ms-border-radius</span>:<span class="variable">@value</span>;</div><div class="line">  <span class="attribute">border-radius</span>:<span class="variable">@value</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="selector-class">.border_radius</span>(<span class="number">10px</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><blockquote>
+<p>我们可以在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰。</p>
+</blockquote>
+<ul>
+<li>使用伪类的时候 可以使用<code>&amp;</code> 表示自己</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"><span class="selector-class">.wjs_header</span> &#123;</div><div class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.wjs_header</span> <span class="selector-class">.header_item</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">40px</span>;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">  <span class="attribute">border-left</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.wjs_header</span> <span class="selector-class">.header_item</span><span class="selector-pseudo">:first-child</span> &#123;</div><div class="line">  <span class="attribute">border-left</span>: none;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@charset</span> <span class="string">"UTF-8"</span>;</div><div class="line"></div><div class="line"><span class="keyword">@import</span> <span class="string">"01-variable"</span>;</div><div class="line"></div><div class="line"><span class="keyword">@import</span> <span class="string">"02-maxin"</span>;</div><div class="line"></div><div class="line"><span class="keyword">@import</span> <span class="string">"03-mixin02"</span>;</div><div class="line"></div><div class="line"><span class="keyword">@import</span> <span class="string">"04-book"</span>;</div></pre></td></tr></table></figure>
+<p>模块化的思想，分模块进行管理这些less文件，最终只需要使用import将less引入到一起即可。</p>
+<h3 id="函数（运算）"><a href="#函数（运算）" class="headerlink" title="函数（运算）"></a>函数（运算）</h3><blockquote>
+<p>在我们的 CSS 中充斥着大量的数值型的 value，less可以直接支持运算，也提供了一系列的函数提供给我们使用。</p>
+</blockquote>
+<p><a href="http://www.1024i.com/demo/less/reference.html" target="_blank" rel="external">http://www.1024i.com/demo/less/reference.html</a></p>
+<h2 id="定制bootstrap"><a href="#定制bootstrap" class="headerlink" title="定制bootstrap"></a>定制bootstrap</h2><ul>
+<li>离线版</li>
+<li>在线版</li>
+</ul>
+<h1 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h1><h2 id="rem是什么？"><a href="#rem是什么？" class="headerlink" title="rem是什么？"></a>rem是什么？</h2><p><code>rem</code>（font size of the root element）是指相对于根元素的字体大小的单位。它就是一个相对单位。</p>
+<p><code>em</code>（font size of the element）是指相对于当前元素的字体大小的单位。它也是一个相对单位。</p>
+<p>它们之间其实很相似，只不过计算的规则一个是依赖根元素，一个是当前元素计算。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>:<span class="number">16px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>:<span class="number">20px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">div</span><span class="selector-class">.em</span> &#123;</div><div class="line">  <span class="comment">/*em的计算方式参照的当前元素的font-size，如果不设置，默认继承自父盒子*/</span></div><div class="line">  <span class="attribute">width</span>:<span class="number">2em</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">2em</span>;</div><div class="line">  <span class="attribute">background-color</span>:red;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*rem的计算方式参照的是html的font-size*/</span></div><div class="line"><span class="selector-tag">div</span><span class="selector-class">.rem</span> &#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">2rem</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">2rem</span>;</div><div class="line">  <span class="attribute">background-color</span>:blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="为什么要用rem？"><a href="#为什么要用rem？" class="headerlink" title="为什么要用rem？"></a>为什么要用rem？</h2><blockquote>
+<p>rem的主要目的就是解决用于不同屏幕的适配问题。rem能够等比例的适配所有的屏幕。</p>
+</blockquote>
+<p>由于市面上手机种类繁多，导致移动端的屏幕种类非常的混乱，比如有常见的<code>320px 360px 375px 384px 480px 640px</code>等。在开发中，美工一般只会提供750px或者是640px的设计稿，这就要求我们通过一张设计稿能够适配所有的屏幕。通常解决方案如下：</p>
+<ul>
+<li>流式布局：虽然可以让各种屏幕都适配，但是显示效果不是非常的友好，因为只有几个尺寸的手机能够完美的显示出来视觉设计师和交互最想要的效果。但是目前使用流式布局的公司非常多，比如 <a href="https://www.amazon.cn/" target="_blank" rel="external">亚马逊</a> 、<a href="https://m.jd.com/" target="_blank" rel="external">京东</a> 、<a href="https://m.ctrip.com/" target="_blank" rel="external">携程</a></li>
+<li>响应式布局：响应式这种方式在国内很少有大型企业的复杂性的网站在移动端用这种方法去做，主要原因是<strong><em>工作大，维护性难</em></strong> 。所以一般都是中小型的门户或者博客类站点会采用响应式的方法从PC端页面到移动端页面以及web app直接一步到位，因为这样反而可以节约成本。</li>
+<li>rem布局：rem能够适配所有的屏幕，与less配合使用效果会更好。目前使用rem布局的有：<a href="https://m.taobao.com" target="_blank" rel="external">淘宝</a> 、 <a href="https://m.suning.com/" target="_blank" rel="external">苏宁</a></li>
+</ul>
+<h2 id="rem与响应式"><a href="#rem与响应式" class="headerlink" title="rem与响应式"></a>rem与响应式</h2><p>因为rem的基准点是根元素html的字体大小，因此我们只需要设置不同屏幕的html的font-size大小不一样就可以达到不同屏幕的适配了。 </p>
+<h3 id="rem与媒体查询"><a href="#rem与媒体查询" class="headerlink" title="rem与媒体查询"></a>rem与媒体查询</h3><p>使用rem配合媒体查询可以适配多个终端</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">320px</span>) &#123;</div><div class="line">  <span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">360px</span>) &#123;</div><div class="line">  <span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">384px</span>) &#123;</div><div class="line">  <span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">19.2px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> (min-width: <span class="number">414px</span>) &#123;</div><div class="line">  <span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">20.7px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优点：使用媒体查询适配，速度快。</p>
+<p>缺点：适配多个终端时，需要添加响应的代码。</p>
+<h3 id="rem与javascript"><a href="#rem与javascript" class="headerlink" title="rem与javascript"></a>rem与javascript</h3><p>通过javascript获取可视区的宽度，计算font-size的值，也可以适配多个终端。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">responsive</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> uiWidth = <span class="number">750</span>;<span class="comment">//设计图宽度</span></div><div class="line">  <span class="keyword">var</span> fontSize = <span class="number">50</span>;<span class="comment">//设计图中1rem的大小</span></div><div class="line">  <span class="comment">//当前屏幕的大小</span></div><div class="line">  <span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth;</div><div class="line">  <span class="keyword">if</span>(pageWidth &gt;= <span class="number">750</span>) &#123;</div><div class="line">    pageWidth = <span class="number">750</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(pageWidth &lt;= <span class="number">320</span>) &#123;</div><div class="line">    pageWidth = <span class="number">320</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//说白了就是把一个屏幕分成了15rem</span></div><div class="line">  <span class="built_in">document</span>.documentElement.style.fontSize = (<span class="number">50</span>/<span class="number">750</span> * pageWidth).toFixed(<span class="number">2</span>) + <span class="string">"px"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优点：直接适配所有的终端</p>
+<p>缺点：必须在页面加载之前设置html的font-size值，不然会出现文字大小调动的情况。</p>
+<h1 id="苏宁易购"><a href="#苏宁易购" class="headerlink" title="苏宁易购"></a>苏宁易购</h1><h2 id="适配主流浏览器"><a href="#适配主流浏览器" class="headerlink" title="适配主流浏览器"></a>适配主流浏览器</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//适配主流浏览器</span></div><div class="line"><span class="comment">//320 360 375 384 400 414 424 480 540 720 750</span></div><div class="line"><span class="comment">//把屏幕分成15rem</span></div><div class="line"><span class="selector-class">.adapter</span>(<span class="variable">@screen</span>:<span class="number">320px</span>) &#123;</div><div class="line">  <span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen</span>) &#123;</div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">      <span class="attribute">font-size</span>: round(<span class="variable">@screen</span>/<span class="number">15</span>, <span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/17/笔记/" data-id="cj6fr4k9s0001io6tpxf6u0o3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/17/hello-world/" class="article-date">
+  <time datetime="2017-08-16T16:13:40.744Z" itemprop="datePublished">2017-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/17/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/17/hello-world/" data-id="cj6fr4k9d0000io6t2i2zb4xp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-萤火虫之光" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/12/萤火虫之光/" class="article-date">
+  <time datetime="2016-05-12T00:37:54.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/萤火虫之光/">萤火虫之光</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/12/萤火虫之光/" data-id="cj6fr4ka80003io6ty8t9xptj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/心情/">心情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/旅程/">旅程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-我的博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/12/我的博客/" class="article-date">
+  <time datetime="2016-05-12T00:37:54.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/我的博客/">萤火虫之光</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/12/我的博客/" data-id="cj6gbv3430000u86th541gh5j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/心情/">心情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/旅程/">旅程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-灌灌灌灌" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/12/灌灌灌灌/" class="article-date">
+  <time datetime="2016-05-12T00:37:54.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/灌灌灌灌/">萤火虫之光</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/12/灌灌灌灌/" data-id="cj6gcpf5k0005zc6t9c7760gx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/心情/">心情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/旅程/">旅程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅程/">旅程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/旅程/" style="font-size: 10px;">旅程</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/17/56789/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/17/网络/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/17/笔记/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/萤火虫之光/">萤火虫之光</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
